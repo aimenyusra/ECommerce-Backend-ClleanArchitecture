@@ -30,6 +30,11 @@ namespace ECommerce.Domain.ValueObjects
             if (Currency != other.Currency)
                 throw new InvalidOperationException($"Cannot add amounts with different currencies: {Currency} and {other.Currency}");
         }
+        public Money Multiply (int factor)
+        {
+            if (factor < 0) throw new ArgumentException("Factor cannot be negative", nameof(factor));
+            return new Money(Amount * factor, Currency);
+        }
         public bool Equals(Money? other) =>
         
             other is not null && Amount == other.Amount && Currency == other.Currency;

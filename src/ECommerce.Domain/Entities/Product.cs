@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ECommerce.Domain.Entities
 {
-    public class Product : BaseEntity
+    public class Product : BaseEntity,IAggregateRoot
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

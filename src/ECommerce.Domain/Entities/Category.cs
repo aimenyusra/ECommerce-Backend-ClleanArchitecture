@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ECommerce.Domain.Entities
 {
-    public class Category : BaseEntity
+    public class Category : BaseEntity,IAggregateRoot
     {
         public string Name { get; private set; } = string.Empty;
         public ICollection<Product> Products { get; private set; } = new List<Product>();
