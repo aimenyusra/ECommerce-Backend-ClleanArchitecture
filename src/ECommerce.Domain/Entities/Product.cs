@@ -45,5 +45,32 @@ namespace ECommerce.Domain.Entities
             Price = newPrice;
             SetUpdatedAt();
         }
+        public void UpdateDetails(string name, string description)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Product name is required.", nameof(name));
+
+            Name = name;
+            Description = description;
+            SetUpdatedAt();
+        }
+
+        public void UpdateCategory(int categoryId)
+        {
+            if (categoryId <= 0)
+                throw new ArgumentException("A valid category is required.", nameof(categoryId));
+
+            CategoryId = categoryId;
+            SetUpdatedAt();
+        }
+
+        public void SetStock(int quantity)
+        {
+            if (quantity < 0)
+                throw new ArgumentException("Stock cannot be negative.", nameof(quantity));
+
+            StockQuantity = quantity;
+            SetUpdatedAt();
+        }
     }
 }
