@@ -9,5 +9,11 @@ namespace ECommerce.Application.Common.Interfaces
     {
         Task<bool> NameExistsAsync(string name, CancellationToken cancellationToken = default);
         Task<IReadOnlyList<Product>> GetByCategoryIdAsync(int categoryId, CancellationToken cancellationToken = default);
+        Task<(IReadOnlyList<Product> Items, int TotalCount)> GetPagedAsync(
+        int pageNumber,
+        int pageSize,
+        int? categoryId,
+        string? searchTerm,
+        CancellationToken cancellationToken = default);
     }
 }

@@ -19,6 +19,14 @@ namespace ECommerce.Domain.Entities
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Category name cannot be null or empty", nameof(name));
             return new Category(name);
         }
-    
+        public void Rename(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Category name is required.", nameof(name));
+
+            Name = name;
+            SetUpdatedAt();
+        }
+
     }
 }
