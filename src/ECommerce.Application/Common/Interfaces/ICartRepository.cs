@@ -1,13 +1,13 @@
-﻿using ECommerce.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DomainCart = ECommerce.Domain.Entities.Cart;
 
 namespace ECommerce.Application.Common.Interfaces
 {
 
-    public interface ICartRepository : IGenericRepository<Cart>
+    public interface ICartRepository : IGenericRepository<DomainCart>
     {
-        Task<Cart?> GetByCustomerIdAsync(Guid customerId, CancellationToken cancellationToken = default);
+        Task<DomainCart?> GetByCustomerIdAsync(Guid customerId, CancellationToken cancellationToken = default);
     }
 }
