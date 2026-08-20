@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ECommerce.Application.Common.Interfaces;
+using ECommerce.Domain.Entities;
+using ECommerce.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce.Infrastructure.Repositories
+namespace ECommerce.Infrastructure.Repositories;
+
+public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
 {
-    internal class CategoryRepository
+    public CategoryRepository(ApplicationDbContext context) : base(context)
     {
     }
+
+    public async Task<bool> NameExistsAsync(string name, CancellationToken cancellationToken = default) =>
+        await DbSet.AnyAsync(c => c.Name == name, cancellationToken);
 }
